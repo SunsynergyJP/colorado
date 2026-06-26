@@ -56,8 +56,9 @@ body {
   background: var(--cream);
   color: var(--ink);
   font-family: var(--ff-body);
+  font-size: 17px;
   font-weight: 300;
-  line-height: 1.8;
+  line-height: 1.9;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -65,8 +66,8 @@ body {
 /* ── UTILITY ── */
 .eyebrow {
   font-family: var(--ff-ui);
-  font-size: 10px;
-  letter-spacing: 0.28em;
+  font-size: 12px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--terra);
   margin-bottom: 16px;
@@ -86,7 +87,7 @@ body {
 
 h2.headline {
   font-family: var(--ff-head);
-  font-size: clamp(32px, 5vw, 64px);
+  font-size: clamp(36px, 5vw, 68px);
   font-weight: 400;
   line-height: 1.1;
   color: var(--ink);
@@ -97,7 +98,7 @@ h2.headline.terra { color: var(--terra); }
 
 .subhead-jp {
   font-family: var(--ff-jp);
-  font-size: clamp(14px, 1.5vw, 19px);
+  font-size: clamp(17px, 1.6vw, 22px);
   font-weight: 300;
   color: var(--stone);
   margin-top: 10px;
@@ -107,16 +108,16 @@ h2.headline.terra { color: var(--terra); }
 
 p.body-copy {
   font-family: var(--ff-body);
-  font-size: clamp(15px, 1.2vw, 17px);
+  font-size: clamp(17px, 1.4vw, 20px);
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--ink-m);
 }
 p.body-copy-jp {
   font-family: var(--ff-jp);
-  font-size: clamp(14px, 1.15vw, 16px);
+  font-size: clamp(16px, 1.3vw, 19px);
   font-weight: 300;
-  line-height: 1.95;
+  line-height: 2.0;
   color: var(--ink-m);
   letter-spacing: 0.05em;
 }
@@ -124,12 +125,12 @@ p.body-copy-jp {
 .btn {
   display: inline-block;
   font-family: var(--ff-ui);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 14px 36px;
+  padding: 16px 40px;
   transition: all 0.25s ease;
   cursor: pointer;
   border: none;
@@ -607,7 +608,7 @@ nav.dark {
 }
 .qs-stat-l {
   font-family: var(--ff-jp-s);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 300;
   color: rgba(255,255,255,0.45);
   margin-top: 8px;
@@ -856,7 +857,7 @@ nav.dark {
   bottom: -32px;
   right: -32px;
   /* Maroon Bells reflection */
-  background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=85') center/cover;
+  background: url('photo-colorado.jpg') center/cover;
   border: 5px solid var(--cream);
 }
 .why-elevation {
@@ -1412,16 +1413,16 @@ nav.dark {
 .schedule-day-num {
   font-family: var(--ff-ui);
   font-size: 9px;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--stone);
-  min-width: 140px;
+  min-width: 150px;
   flex-shrink: 0;
 }
 .schedule-day[open] .schedule-day-num { color: rgba(255,255,255,0.5); }
 .schedule-day-title {
   font-family: var(--ff-jp);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   color: var(--ink);
   line-height: 1.4;
@@ -1476,7 +1477,7 @@ nav.dark {
 .tl-entry:last-child { padding-bottom: 0; }
 .tl-time {
   font-family: var(--ff-ui);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--terra);
   letter-spacing: 0.06em;
@@ -1509,7 +1510,7 @@ nav.dark {
 }
 .tl-title {
   font-family: var(--ff-jp);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--ink);
   line-height: 1.5;
@@ -1519,10 +1520,10 @@ nav.dark {
 .tl-title.highlight { color: var(--sky); }
 .tl-desc {
   font-family: var(--ff-jp-s);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 300;
   color: var(--ink-l);
-  line-height: 1.75;
+  line-height: 1.8;
   letter-spacing: 0.03em;
 }
 
@@ -1768,7 +1769,7 @@ nav.dark {
 #after::before {
   content: '';
   position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=60') center/cover;
+  background: url('photo-colorado.jpg') center/cover;
   opacity: 0.08;
 }
 .after-inner { position: relative; }
@@ -1800,7 +1801,7 @@ nav.dark {
 .cert-card.featured .cert-level-mark { color: rgba(255,255,255,0.45); }
 .cert-name {
   font-family: var(--ff-jp);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: white;
   line-height: 1.55;
@@ -1881,7 +1882,7 @@ nav.dark {
 }
 .al-title {
   font-family: var(--ff-jp);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: white;
   letter-spacing: 0.06em;
@@ -1890,7 +1891,7 @@ nav.dark {
 }
 .al-desc {
   font-family: var(--ff-jp-s);
-  font-size: 11.5px;
+  font-size: 14px;
   font-weight: 300;
   color: rgba(255,255,255,0.5);
   line-height: 1.8;
@@ -2006,7 +2007,7 @@ nav.dark {
 }
 .support-item-title {
   font-family: var(--ff-jp);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: white;
   letter-spacing: 0.06em;
@@ -2015,7 +2016,7 @@ nav.dark {
 }
 .support-item-body {
   font-family: var(--ff-jp-s);
-  font-size: 11.5px;
+  font-size: 14px;
   font-weight: 300;
   color: rgba(255,255,255,0.45);
   line-height: 1.85;
@@ -2067,7 +2068,7 @@ nav.dark {
 .faq-sidebar-photo {
   width: 100%;
   aspect-ratio: 3/4;
-  background: url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=85') center/cover;
+  background: url('photo-colorado.jpg') center/cover;
   margin-top: 32px;
 }
 .faq-list { margin-top: 0; }
@@ -2083,11 +2084,11 @@ nav.dark {
   cursor: pointer;
   list-style: none;
   font-family: var(--ff-jp-s);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   color: var(--ink);
   letter-spacing: 0.03em;
-  line-height: 1.55;
+  line-height: 1.6;
   gap: 20px;
   transition: color 0.2s;
 }
@@ -2107,7 +2108,7 @@ nav.dark {
 .faq-item[open] .faq-icon { transform: rotate(45deg); }
 .faq-a {
   font-family: var(--ff-jp-s);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   color: var(--ink-l);
   line-height: 1.9;
@@ -2456,9 +2457,8 @@ footer {
     </h1>
 
     <p class="hero-jp">
-      世界最先端の機能性医療科学者<br>
-      Dr. Christopher Shade から直接学ぶ、<br>
-      10年に1回の本社エグゼクティブ研修。
+      世界最先端の機能性医療科学者 Dr. Christopher Shade から<br>
+      直接学ぶ、10年に1回の本社エグゼクティブ研修。
     </p>
 
     <!-- 参加後に得られる3つの変化（ヒーロー内で即座に伝える） -->
@@ -2502,6 +2502,7 @@ footer {
   <!-- QS HQ location signature -->
   <div class="hero-geo">
     <div class="hero-geo-line">Quicksilver Scientific HQ · <strong>Louisville, CO</strong></div>
+    <div class="hero-geo-line">39°58'N 105°7'W · <strong>Founded 2005</strong></div>
     <div class="hero-geo-line">QSS JAPAN TEAM · <strong>Since 2017</strong></div>
   </div>
 </section>
@@ -3776,25 +3777,16 @@ footer {
       <div class="dl-item"><span class="dl-key">主催</span><span class="dl-val">QSS JAPAN TEAM ／ 株式会社サンシナジー</span></div>
     </div>
     <div>
-      <p style="font-family:var(--ff-ui);font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px">Course Options</p>
-      <div class="pricing-cards">
-        <div class="price-card main">
-          <div class="price-type">Standard Course</div>
-          <div class="price-name">スタンダードコース</div>
-          <div class="price-amount gold">¥600,000</div>
-          <div class="price-note">税別 ／ 航空券・ホテル別途 ／ マニュアル・運転手・昼食込み</div>
-        </div>
-        <div class="price-card">
-          <div class="price-type">Premium Course</div>
-          <div class="price-name">プレミアムコース</div>
-          <div class="price-amount">¥1,500,000〜</div>
-          <div class="price-note">税別 ／ 定員5名以下 ／ Dr. Shade個人面談付き ／ 詳細はお問い合わせを</div>
-        </div>
-        <div class="price-card">
-          <div class="price-type">Business Course</div>
-          <div class="price-name">ビジネスコース（院長・経営者限定）</div>
-          <div class="price-amount">¥800,000〜</div>
-          <div class="price-note">税別 ／ ビジネスセッション追加 ／ 詳細はお問い合わせを</div>
+      <!-- 参加費：単一料金 -->
+      <div style="background:rgba(255,255,255,0.07);border-top:3px solid var(--terra);padding:36px 32px;margin-top:8px;">
+        <div style="font-family:var(--ff-ui);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px">Participation Fee</div>
+        <div style="font-family:var(--ff-head);font-size:clamp(48px,5vw,72px);font-weight:400;color:#E8C96A;line-height:1;letter-spacing:-0.02em">¥600,000</div>
+        <div style="font-family:var(--ff-jp-s);font-size:14px;color:rgba(255,255,255,0.5);margin-top:8px;letter-spacing:0.04em">税別</div>
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
+          <div style="font-family:var(--ff-jp-s);font-size:14px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:10px"><span style="color:var(--terra-l)">✓</span>4日間プログラム費用・現地専任スタッフ</div>
+          <div style="font-family:var(--ff-jp-s);font-size:14px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:10px"><span style="color:var(--terra-l)">✓</span>運転手付き移動・日本語マニュアル・昼食</div>
+          <div style="font-family:var(--ff-jp-s);font-size:14px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:10px"><span style="color:var(--terra-l)">✓</span>QSS JAPAN認定機能性医療エキスパート修了証</div>
+          <div style="font-family:var(--ff-jp-s);font-size:14px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:10px"><span style="color:rgba(255,255,255,0.3)">※</span>航空券・ホテルは別途（ご希望の方はご案内します）</div>
         </div>
       </div>
     </div>
