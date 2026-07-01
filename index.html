@@ -3838,25 +3838,25 @@ footer {
       </div>
     </div>
 
-    <form id="contact-form" class="form-stack" onsubmit="submitContactForm(event)">
+    <form id="contact-form" class="form-stack" onsubmit="submitToGAS(event)">
       <div class="fg-row">
-        <div class="fg"><label class="fl">お名前 *</label><input type="text" name="name" class="fi" placeholder="山田 太郎" required></div>
+        <div class="fg"><label class="fl">お名前 *</label><input id="f-name" type="text" class="fi" placeholder="山田 太郎" required></div>
         <div class="fg">
           <label class="fl">職種 *</label>
-          <select name="role" class="fs" required>
+          <select id="f-role" class="fs" required>
             <option value="">選択してください</option>
             <option>医師</option><option>歯科医師</option><option>獣医師</option>
             <option>薬剤師</option><option>医療機関経営者</option><option>ウェルネス事業者</option><option>その他</option>
           </select>
         </div>
       </div>
-      <div class="fg"><label class="fl">クリニック名・勤務先</label><input type="text" name="clinic" class="fi" placeholder="○○クリニック"></div>
+      <div class="fg"><label class="fl">クリニック名・勤務先</label><input id="f-clinic" type="text" class="fi" placeholder="○○クリニック"></div>
       <div class="fg-row">
-        <div class="fg"><label class="fl">メールアドレス *</label><input type="email" name="email" class="fi" placeholder="info@clinic.com" required></div>
-        <div class="fg"><label class="fl">電話番号</label><input type="tel" name="phone" class="fi" placeholder="090-0000-0000"></div>
+        <div class="fg"><label class="fl">メールアドレス *</label><input id="f-email" type="email" class="fi" placeholder="info@clinic.com" required></div>
+        <div class="fg"><label class="fl">電話番号</label><input id="f-phone" type="tel" class="fi" placeholder="090-0000-0000"></div>
       </div>
-      <div class="fg"><label class="fl">ご質問・ご要望</label><textarea name="message" class="fta" placeholder="ご不明な点やご要望をご記入ください"></textarea></div>
-      <label class="f-check"><input type="checkbox" name="consultation" value="希望する">無料個別相談を希望する（担当者よりご連絡いたします）</label>
+      <div class="fg"><label class="fl">ご質問・ご要望</label><textarea id="f-message" class="fta" placeholder="ご不明な点やご要望をご記入ください"></textarea></div>
+      <label class="f-check"><input id="f-consultation" type="checkbox" value="希望する">無料個別相談を希望する（担当者よりご連絡いたします）</label>
       <div id="form-status" style="display:none;padding:14px 18px;font-family:var(--ff-jp-s);font-size:13px;letter-spacing:0.04em;line-height:1.6;"></div>
       <button type="submit" id="form-submit-btn" class="btn btn-terra" style="width:100%;padding:16px;font-size:14px;text-align:center">申し込みを送信する</button>
     </form>
@@ -3896,55 +3896,37 @@ footer {
 
 
 <script>
-// ── Google Spreadsheet 連携 ──
-// GAS Web App URL を下記に貼り付けてください
 var GAS_URL = 'https://script.google.com/macros/s/AKfycbwapG4rQMnXsWceWKwDKKOBU-d90mi8uN-BieGyneJJDfw4M8CRwueMJaLmKLhQZlyO/exec';
 
-function submitContactForm(e) {
+function submitToGAS(e) {
   e.preventDefault();
-  var btn = document.getElementById('form-submit-btn');
+  var btn    = document.getElementById('form-submit-btn');
   var status = document.getElementById('form-status');
-  var form = document.getElementById('contact-form');
 
   btn.disabled = true;
   btn.textContent = '送信中...';
   status.style.display = 'none';
 
-  var data = {
-    timestamp: new Date().toLocaleString('ja-JP', {timeZone:'Asia/Tokyo'}),
-    name:     form.name.value,
-    role:     form.role.value,
-    clinic:   form.clinic.value,
-    email:    form.email.value,
-    phone:    form.phone.value,
-    message:  form.message.value,
-    consultation: form.consultation.checked ? '希望する' : ''
-  };
-
-  var url = GAS_URL + '?payload=' + encodeURIComponent(JSON.stringify(data));
-
-  fetch(url, {
-    method: 'GET',
-    mode: 'no-cors'
-  })
-  .then(function() {
-    status.style.background = 'rgba(61,107,74,0.1)';
-    status.style.borderLeft = '3px solid #3D6B4A';
-    status.style.color = '#3D6B4A';
-    status.textContent = 'お申し込みを受け付けました。担当者より3営業日以内にご連絡いたします。';
-    status.style.display = 'block';
-    form.reset();
-    btn.textContent = '送信完了';
-  })
-  .catch(function() {
-    status.style.background = 'rgba(196,98,45,0.08)';
-    status.style.borderLeft = '3px solid #C4622D';
-    status.style.color = '#C4622D';
-    status.textContent = '送信に失敗しました。恐れ入りますが info@qssjapan.com までご連絡ください。';
-    status.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = '申し込みを送信する';
+  var params = new URLSearchParams({
+    timestamp:    new Date().toLocaleString('ja-JP', {timeZone:'Asia/Tokyo'}),
+    name:         document.getElementById('f-name').value,
+    role:         document.getElementById('f-role').value,
+    clinic:       document.getElementById('f-clinic').value,
+    email:        document.getElementById('f-email').value,
+    phone:        document.getElementById('f-phone').value,
+    message:      document.getElementById('f-message').value,
+    consultation: document.getElementById('f-consultation').checked ? '希望する' : ''
   });
+
+  var img = new Image();
+  img.onload = img.onerror = function() {
+    status.style.cssText = 'display:block;padding:14px 18px;background:rgba(61,107,74,0.1);border-left:3px solid #3D6B4A;color:#3D6B4A;font-family:var(--ff-jp-s);font-size:13px;letter-spacing:0.04em;line-height:1.6;';
+    status.textContent = 'お申し込みを受け付けました。担当者より3営業日以内にご連絡いたします。';
+    document.getElementById('contact-form').reset();
+    btn.textContent = '送信完了';
+    btn.disabled = false;
+  };
+  img.src = GAS_URL + '?' + params.toString();
 }
 </script>
 </body>
