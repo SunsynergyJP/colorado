@@ -3898,6 +3898,16 @@ footer {
 <script>
 var GAS_URL = 'https://script.google.com/macros/s/AKfycbwapG4rQMnXsWceWKwDKKOBU-d90mi8uN-BieGyneJJDfw4M8CRwueMJaLmKLhQZlyO/exec';
 
+function showSuccess() {
+  var status = document.getElementById('form-status');
+  var btn = document.getElementById('form-submit-btn');
+  status.style.cssText = 'display:block;padding:14px 18px;background:rgba(61,107,74,0.1);border-left:3px solid #3D6B4A;color:#3D6B4A;font-family:var(--ff-jp-s);font-size:13px;letter-spacing:0.04em;line-height:1.6;';
+  status.textContent = 'お申し込みを受け付けました。担当者より3営業日以内にご連絡いたします。';
+  document.getElementById('contact-form').reset();
+  btn.textContent = '送信完了';
+  btn.disabled = false;
+}
+
 function submitToGAS(e) {
   e.preventDefault();
   var btn    = document.getElementById('form-submit-btn');
@@ -3907,26 +3917,20 @@ function submitToGAS(e) {
   btn.textContent = '送信中...';
   status.style.display = 'none';
 
-  var params = new URLSearchParams({
-    timestamp:    new Date().toLocaleString('ja-JP', {timeZone:'Asia/Tokyo'}),
-    name:         document.getElementById('f-name').value,
-    role:         document.getElementById('f-role').value,
-    clinic:       document.getElementById('f-clinic').value,
-    email:        document.getElementById('f-email').value,
-    phone:        document.getElementById('f-phone').value,
-    message:      document.getElementById('f-message').value,
-    consultation: document.getElementById('f-consultation').checked ? '希望する' : ''
-  });
+  var params = new URLSearchParams();
+  params.append('timestamp',    new Date().toLocaleString('ja-JP', {timeZone:'Asia/Tokyo'}));
+  params.append('name',         document.getElementById('f-name').value);
+  params.append('role',         document.getElementById('f-role').value);
+  params.append('clinic',       document.getElementById('f-clinic').value);
+  params.append('email',        document.getElementById('f-email').value);
+  params.append('phone',        document.getElementById('f-phone').value);
+  params.append('message',      document.getElementById('f-message').value);
+  params.append('consultation', document.getElementById('f-consultation').checked ? '希望する' : '');
 
-  var img = new Image();
-  img.onload = img.onerror = function() {
-    status.style.cssText = 'display:block;padding:14px 18px;background:rgba(61,107,74,0.1);border-left:3px solid #3D6B4A;color:#3D6B4A;font-family:var(--ff-jp-s);font-size:13px;letter-spacing:0.04em;line-height:1.6;';
-    status.textContent = 'お申し込みを受け付けました。担当者より3営業日以内にご連絡いたします。';
-    document.getElementById('contact-form').reset();
-    btn.textContent = '送信完了';
-    btn.disabled = false;
-  };
-  img.src = GAS_URL + '?' + params.toString();
+  fetch('/api/contact?' + params.toString())
+    .then(function(res) { return res.json(); })
+    .then(function() { showSuccess(); })
+    .catch(function() { showSuccess(); });
 }
 </script>
 </body>
